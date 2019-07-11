@@ -79,6 +79,8 @@ class SinglyLinkedList:
             self.tail = self.head.next_node
 
     def __next__(self):
+        """Next dunder."""
+        # As long as self.n points to a node, return and increment
         if self.n:
             n = self.n
             self.n = self.n.next_node
@@ -87,11 +89,13 @@ class SinglyLinkedList:
             raise StopIteration
 
     def __iter__(self):
-        # Next 
+        """Iterate-or dunder."""
+        # Attribute for next function
         self.n = self.head
         return self
 
     def __len__(self):
+        """Length dunder."""
         count = 0
         for node in self.__iter__():
             count += 1
@@ -111,7 +115,7 @@ class SinglyLinkedList:
         """
         # If data is an iterable
         if hasattr(data, '__iter__'):
-            # Iteratable iterator
+            # Iterable iterator
             data_iter = iter(data)
 
             # Set tail as current node
@@ -141,29 +145,106 @@ class SinglyLinkedList:
 
         """
         # Create new singly linked list with data
-        sll = SinglyLinkedList(data)
+        new = SinglyLinkedList(data)
         # Point tail to head of old list
-        sll.tail.next_node = self.head
+        new.tail.next_node = self.head
         # Point head of old list to head of new list
-        self.head = sll.head
+        self.head = new.head
 
-    def insert_after(self, key):
-        pass
+    def get_node(self, key):
+        """
+        Get first node containing key.
 
-    def insert_before(self, key):
-        pass
+        Parameters
+        ----------
+        key: object
+            Value in node to get
 
-    def update(self, data):
-        pass
+        Returns
+        -------
+        node: SingleNode
+            Node containing key
 
-    def delete(self, key):
-        pass
+        """
+        for node in self.__iter__():
+            if node.data == key:
+                return node
+        raise ValueError('key not found')
+
+    def insert(self, data, key):
+        """
+        Insert new nodes containing data after first node containing key.
+
+        Parameters
+        ----------
+        data : non-iterable object or iterable, default None.
+            If object, inserts a single node with object as stored value.
+            If iterable, inserts len(iterable) nodes with stored values
+            given by iterable.
+        key: object
+            Value in node after which data is inserted
+
+
+        """
+        # get node with key
+        node = self.get_node(key)
+        # create new list with data
+        new = SinglyLinkedList(data)
+        # point tail of new list to rest of old list
+        new.tail.next_node = node.next_node
+        # point first part of old list to head of new
+        node.next_node = new.head
+
+    def update(self, data, node):
+        """
+        Update single node with data.
+
+        Parameters
+        ----------
+        data: non-iterable object
+            New value to update node with
+        node: SingleNode
+            Node to update
+
+        """
+        node.data = data
+
+    def delete(self, node):
+        """
+        Delete node from list.
+
+        Parameters
+        ----------
+        node: SingleNode
+            node to delete from list
+
+        """
+        # If we're deleting the head node
+        if self.head == node:
+            self.head = node.next_node
+            return None
+        else:
+            for prev in self.__iter__():
+                curr = prev.next_node
+                if curr == node:
+                    prev.next_node = curr.next_node
+                    return None
+        raise ValueError('Node not found')
 
     def data_list(self):
-        pass
+        """
+        Get node values as list.
+
+        Returns
+        ----------
+        data : list
+            Node values
+
+        """
+        data = [node.data for node in self.__iter__() if node.data is not None]
+        return data
 
 
 if __name__ == '__main__':
 
-        sll = SinglyLinkedList([1, 2, 3])
-        sll.prepend([3, 4, 5])
+        sll = SinglyLinkedList(range(10))
