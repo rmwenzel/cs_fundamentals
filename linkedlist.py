@@ -57,6 +57,7 @@ class SinglyLinkedList:
         if not data:
             # Set head and tail to be the same empty single node
             self.head = self.tail = SingleNode()
+
         # If data is an iterable
         elif hasattr(data, '__iter__'):
             # Iterator for data
@@ -71,12 +72,13 @@ class SinglyLinkedList:
                 curr = curr.next_node
             # Set tail to last node pointer
             self.tail = curr
+
         # Else data is not an iterable
         else:
             # Set head node with data
             self.head = SingleNode(data)
             # Set tail node to last node pointer
-            self.tail = self.head.next_node
+            self.tail = self.head
 
     def __next__(self):
         """Next dunder."""
@@ -85,6 +87,7 @@ class SinglyLinkedList:
             n = self.n
             self.n = self.n.next_node
             return n
+
         else:
             raise StopIteration
 
@@ -127,6 +130,7 @@ class SinglyLinkedList:
                 temp = curr
                 curr = curr.next_node
             self.tail = temp
+
         # Else data is an non-iterable
         else:
             self.tail.next_node = SingleNode(data)
@@ -169,6 +173,7 @@ class SinglyLinkedList:
         for node in self.__iter__():
             if node.data == key:
                 return node
+
         raise ValueError('key not found')
 
     def insert(self, data, key):
@@ -221,14 +226,22 @@ class SinglyLinkedList:
         """
         # If we're deleting the head node
         if self.head == node:
+            # Point head to next node
             self.head = node.next_node
             return None
+
+        # If the node we're deleting occurs after head
         else:
+            # iterate over one node back
             for prev in self.__iter__():
+                # current node is next node of previous
                 curr = prev.next_node
+                # if this is the node we want to delete
                 if curr == node:
+                    # point previous next node to current next node
                     prev.next_node = curr.next_node
                     return None
+
         raise ValueError('Node not found')
 
     def data_list(self):
