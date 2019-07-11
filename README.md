@@ -18,13 +18,12 @@ This is a personal project for learning purposes. The main aims are:
 
 Development is ongoing
 
+## Data Structures
 
-## `Structs`
+These are found in the directory `structs`. Implemented so far are
 
-This directory contains implementations of data structures. Modules implemented so far are:
-
-- `linkedlist.py` - Linked list structures
-	- `SinglyLinkedList` - Singly-linked list class
+- Linked list structures (`linkedlist.py`):
+	- `SinglyLinkedList`
 
 ## Requirements 
 
