@@ -28,7 +28,7 @@ These are in the `structs` directory. Implemented so far are
 ## Requirements 
 
 Package dependencies are in `environment.yml`, a
-[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#). If you have conda installed you can create the environment with
+[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#) config file. If you have conda installed you can create the environment with
 
 ```
 conda env create -f environment.yml
