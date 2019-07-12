@@ -20,18 +20,25 @@ Development is ongoing
 
 ## Data Structures
 
-These are found in the directory `structs`. Implemented so far are
+These are in the `structs` directory. Implemented so far are
 
 - Linked list structures (`linkedlist.py`):
 	- `SinglyLinkedList`
 
 ## Requirements 
 
-Although there are few packages beyond the python standard library, I'm using a 
-[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#). The file 'environment.yml' contains all conda and pip dependencies. If you have conda installed you can create the environment with
+Package dependencies are in `environment.yml`, a
+[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#). If you have conda installed you can create the environment with
 
 ```
 conda env create -f environment.yml
 ```
 
+## Testing
+
+These are in the `tests` directory. Tests use `pytest` and can be run from the root directory.
+
+```
+python -m pytest
+```
 
