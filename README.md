@@ -8,7 +8,7 @@ OOP implementations of fundamental data structures and algorithms in Python 3.
 
 This is a personal project for learning purposes. The main aims are:
 
-- Learn data structures and algorithms through scratch implentations
+- Learn data structures and algorithms through scratch implementations
 - Practice object-oriented programming
 - Practice good software development:
 	- documentation
@@ -19,12 +19,20 @@ This is a personal project for learning purposes. The main aims are:
 Development is ongoing
 
 
-## `Structs`
+## `structures/`
 
-This directory contains implementations of data structures. Modules implemented so far are:
+This directory contains implementations of various famous abstract data types. Implemented so far are:
 
-- `linkedlist.py` - Linked list structures
-	- `SinglyLinkedList` - Singly-linked list class
+- `nodes.py` - Node types
+	- `SingleNode` - Node with single pointer
+	- `DoubleNode` - Node with two pointers
+
+- `linkedlist.py` - Linked-list types
+	- `SinglyLinkedList` - Singly-linked lists
+
+
+
+
 
 ## Requirements 
 
@@ -35,4 +43,9 @@ Although there are few packages beyond the python standard library, I'm using a
 conda env create -f environment.yml
 ```
 
+## Testing
+These are in the tests directory. Tests use pytest and can be run from the root directory.
 
+```
+python -m pytest
+```

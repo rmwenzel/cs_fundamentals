@@ -1,15 +1,9 @@
-"""
-Class implementations of linked lists.
-
-For a helpful discussion of singly-linked lists with Java code see:
-https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
-
-"""
+"""Linked list data structures."""
 
 
 class SingleNode:
     """
-    Simple node class for use in singly-linked lists.
+    Simple single node class.
 
     Parameters
     ----------
@@ -33,7 +27,9 @@ class SingleNode:
 
 class SinglyLinkedList:
     """
-    Singly-linked list class.
+    Node-based implementation of singly-linked lists. For a helpful discussion of singly-linked lists with Java code see: 
+
+    https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
 
     Parameters
     ----------
@@ -256,8 +252,3 @@ class SinglyLinkedList:
         """
         data = [node.data for node in self.__iter__() if node.data is not None]
         return data
-
-
-if __name__ == '__main__':
-
-        sll = SinglyLinkedList(range(10))
