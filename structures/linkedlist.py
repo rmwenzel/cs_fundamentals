@@ -1,39 +1,15 @@
-"""
-Class implementations of linked lists.
+"""Class implementations of linked-list types."""
 
-For a helpful discussion of singly-linked lists with Java code see:
-https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
-
-"""
-
-
-class SingleNode:
-    """
-    Simple node class for use in singly-linked lists.
-
-    Parameters
-    ----------
-    data : obj, default None
-        The data to be stored in the node. Can be any object.
-
-    Attributes
-    ----------
-    data : obj
-        Object stored in the node.
-    next_node : SingleNode
-        Pointer to next node.
-
-    """
-
-    def __init__(self, data=None):
-        """Class constructor."""
-        self.data = data
-        self.next_node = None
+from node import SingleNode
 
 
 class SinglyLinkedList:
-    """
-    Singly-linked list class.
+    """Single node implementation of singly-linked lists.
+
+    For a helpful
+    discussion of singly-linked lists with Java code see:
+
+    https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
 
     Parameters
     ----------
@@ -46,7 +22,7 @@ class SinglyLinkedList:
     ----------
     head : SingleNode.
         Head node of singly-linked list.
-    tail : SingleNode, default None.
+    tail : SingleNode.
         Tail node of singly-linked list.
 
     """
@@ -256,8 +232,3 @@ class SinglyLinkedList:
         """
         data = [node.data for node in self.__iter__() if node.data is not None]
         return data
-
-
-if __name__ == '__main__':
-
-        sll = SinglyLinkedList(range(10))
