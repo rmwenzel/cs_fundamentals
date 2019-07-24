@@ -19,8 +19,9 @@ class BinarySearchTree:
         If an object, instance is a tree with one DoubleNode and object
         stored at the root. If iterable, instance is a tree with
         len(iterable) nodes with stored values given by iterable. Data
-        values should be objects of the same type and support the
-        python rich comparison methods:
+        values should be objects of the same type and support rich
+        comparison methods:
+
         https://docs.python.org/3/reference/datamodel.html
 
     Attributes
@@ -45,7 +46,7 @@ class BinarySearchTree:
     @property
     def root(self):
         """Get, set, or delete root node of tree."""
-        return self.root
+        return self._root
 
     @root.setter
     def root(self, node):
@@ -99,22 +100,171 @@ class BinarySearchTree:
                 else:
                     node.right = DoubleNode(data)
 
-    def _depth_first_traversal(self):
-        pass
+    def inorder_traversal(self, node):
+        """
+        Depth-first traversal of tree in order.
 
-    def _breadth_first_traversal(self):
-        pass
+        Parameters
+        ----------
+        node: DoubleNode
+            Node to begin traveral from.
 
-    def delete(self, data):
-        pass
 
-    def search(self, data):
-        pass
+        Returns
+        -------
+        data: list
+            Sorted list of values.
 
-    def min_val(self):
-        pass
+        """
+        data = []
+        # recurse on non-empty left node
+        if node.left:
+            left_res = self.inorder_traversal(node.left)
+            # flatten nested list
+            for item in left_res:
+                if isinstance(item, list):
+                    for elt in item:
+                        data += [elt]
+                else:
+                    data += [item]
+        # include data if node is non-empty
+        if node.data:
+            data += [node.data]
+        # recurse on non-empty right node
+        if node.right:
+            right_res = self.inorder_traversal(node.right)
+            # flatten nested list
+            for item in right_res:
+                if isinstance(item, list):
+                    for elt in item:
+                        data += [elt]
+                else:
+                    data += [item]
+        return data
 
-    def max_val(self):
+    def search(self, node, data):
+        """
+        Search tree for data after node.
+
+        Parameters
+        ----------
+        data: object
+            Value to search for. Should support rich comparison.
+        node: DoubleNode
+            Node to begin search from.
+
+        Raises
+        ------
+        ValueError
+            Tree is empty
+            Data not found
+
+        Returns
+        -------
+        result: DoubleNode
+            Node in tree containing data if found.
+
+        """
+        # Raise error if tree is empty
+        if not node.data:
+            raise ValueError("Tree is empty")
+        # Base case: return node if data is found
+        elif node.data == data:
+            result = node
+            return result
+        else:
+            # If data is left of node
+            if data <= node.data:
+                # Recurse if left node is non-empty
+                if node.left:
+                    result = self.search(node.left, data)
+                    return result
+                else:
+                    raise ValueError(f"{data} not found in tree")
+            # If data is right of node
+            else:
+                if node.right:
+                    # Recurse if right node is non-empty
+                    result = self.search(node.right, data)
+                    return result
+                else:
+                    raise ValueError(f"{data} not found in tree")
+
+    def min_val(self, node):
+        """
+        Find minimum value at or below node.
+
+        Parameters
+        ----------
+        node: DoubleNode
+            Node to begin searching from
+
+        Raises
+        ------
+        ValueError
+            Empty node
+
+        Returns
+        -------
+        min_val: object
+            Minimum value found at or below node
+
+        """
+        if not node.data:
+            raise ValueError('Node is empty')
+        # Move left until reaching a null pointer
+        while True:
+            if node.left:
+                node = node.left
+            else:
+                min_val = node.data
+                return min_val
+
+    def max_val(self, node):
+        """
+        Find maximum value at or below node.
+
+        Parameters
+        ----------
+        node: DoubleNode
+            Node to begin searching from
+
+        Raises
+        ------
+        ValueError
+            Empty node
+
+        Returns
+        -------
+        max_val: object
+            Maximum value found at or below node
+
+        """
+        if not node.data:
+            raise ValueError('Node is empty')
+        # Move left until reaching a null pointer
+        while True:
+            if node.right:
+                node = node.right
+            else:
+                max_val = node.data
+                return max_val
+
+    def delete(self, node, data):
+        """
+        Delete node containing data.
+
+        Parameters
+        ----------
+        data: object
+            Value to delete. Should be of same type as values already in
+            tree and support rich comparison methods:
+
+            https://docs.python.org/3/reference/datamodel.html
+        node: DoubleNode
+            Node to begin search from.
+
+        """
         pass
 
     def select(self):
@@ -122,3 +272,10 @@ class BinarySearchTree:
 
     def rank(self):
         pass
+
+
+if __name__ == '__main__':
+    import random
+    sample = random.sample(range(1, 1001), 100)
+    bst = BinarySearchTree(sample)
+    res = bst.min_val(bst.root)
