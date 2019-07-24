@@ -3,7 +3,7 @@ Unit tests for linked list classes
 
 """
 import pytest
-import linkedlist as ll
+import structures.linkedlist as ll
 
 
 class TestSinglyLinkedList:
@@ -113,4 +113,5 @@ class TestSinglyLinkedList:
         sll.delete(node)
         dl.remove(1)
         assert dl == sll.data_list()
+
 
