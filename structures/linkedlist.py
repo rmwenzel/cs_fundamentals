@@ -1,33 +1,11 @@
 """Linked list data structures."""
 
 
-class SingleNode:
-    """
-    Simple single node class.
-
-    Parameters
-    ----------
-    data : obj, default None
-        The data to be stored in the node. Can be any object.
-
-    Attributes
-    ----------
-    data : obj
-        Object stored in the node.
-    next_node : SingleNode
-        Pointer to next node.
-
-    """
-
-    def __init__(self, data=None):
-        """Class constructor."""
-        self.data = data
-        self.next_node = None
-
-
 class SinglyLinkedList:
     """
-    Node-based implementation of singly-linked lists. For a helpful discussion of singly-linked lists with Java code see: 
+    Node-based implementation of singly-linked lists.
+
+    For a helpful discussion of singly-linked lists with Java code see:
 
     https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
 

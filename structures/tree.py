@@ -157,7 +157,7 @@ class BinarySearchTree:
         ------
         ValueError
             Tree is empty
-            Data not found
+            data not found
 
         Returns
         -------
@@ -180,7 +180,7 @@ class BinarySearchTree:
                     result = self.search(node.left, data)
                     return result
                 else:
-                    raise ValueError(f"{data} not found in tree")
+                    raise ValueError(f"{data} not found")
             # If data is right of node
             else:
                 if node.right:
@@ -188,7 +188,7 @@ class BinarySearchTree:
                     result = self.search(node.right, data)
                     return result
                 else:
-                    raise ValueError(f"{data} not found in tree")
+                    raise ValueError(f"{data} not found")
 
     def min_val(self, node):
         """
@@ -262,20 +262,49 @@ class BinarySearchTree:
 
             https://docs.python.org/3/reference/datamodel.html
         node: DoubleNode
-            Node to begin search from.
+            Node to begin search from
+
+        Raises
+        ------
+        ValueError
+            data not found
 
         """
-        pass
-
-    def select(self):
-        pass
-
-    def rank(self):
-        pass
-
-
-if __name__ == '__main__':
-    import random
-    sample = random.sample(range(1, 1001), 100)
-    bst = BinarySearchTree(sample)
-    res = bst.min_val(bst.root)
+        # find node containing data if it exists
+        del_node = self.search(node, data)
+        # node is a leaf
+        if not del_node.left and not del_node.right:
+            del_node = None
+        # node has one right child
+        elif not del_node.left and del_node.right:
+            # copy right child data and children to node
+            del_node.data = del_node.right.data
+            temp_left = del_node.left.left
+            temp_right = del_node.left.right
+            del_node.left = temp_left
+            del_node.right = temp_right
+            # del right child
+            del_node.right = None
+        # node has one left child
+        elif del_node.left and not del_node.right:
+            # copy left child data and children to node
+            del_node.data = del_node.left.data
+            temp_left = del_node.left.left
+            temp_right = del_node.left.right
+            del_node.left = temp_left
+            del_node.right = temp_right
+            # del left childdel_
+            del_node.left = None
+        # node has two children
+        else:
+            # search for max value node and its parent node
+            # in left subtree
+            curr = node.left
+            while curr.right:
+                prev = curr
+                curr = curr.right
+            max_val_left = curr.data
+            # copy max left value to node
+            del_node.data = max_val_left
+            # bypass max value node
+            prev.right = curr.left
