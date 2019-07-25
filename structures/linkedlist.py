@@ -1,5 +1,7 @@
 """Linked list data structures."""
 
+from structures.node import SingleNode
+
 
 class SinglyLinkedList:
     """
