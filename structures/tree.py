@@ -1,6 +1,6 @@
 """Class implementations of tree types."""
 
-from node import DoubleNode
+from structures.node import DoubleNode
 
 
 class BinarySearchTree:
