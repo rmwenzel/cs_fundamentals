@@ -1,13 +1,12 @@
 """Class implementations of linked-list types."""
 
-from node import SingleNode
-
+from structures.node import SingleNode
 
 class SinglyLinkedList:
-    """Single node implementation of singly-linked lists.
+    """
+    Node-based implementation of singly-linked lists.
 
-    For a helpful
-    discussion of singly-linked lists with Java code see:
+    For a helpful discussion of singly-linked lists with Java code see:
 
     https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html
 

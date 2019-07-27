@@ -8,7 +8,7 @@ OOP implementations of fundamental data structures and algorithms in Python 3.
 
 This is a personal project for learning purposes. The main aims are:
 
-- Learn data structures and algorithms through scratch implentations
+- Learn data structures and algorithms through scratch implementations
 - Practice object-oriented programming
 - Practice good software development:
 	- documentation
@@ -20,10 +20,17 @@ Development is ongoing
 
 ## Data Structures
 
-These are in the `structs` directory. Implemented so far are
+Implementations of various famous abstract data types. These are in found in the `structures/` directory.Implemented so far are:
 
-- Linked list structures (`linkedlist.py`):
+- `nodes.py`
+	- `SingleNode` - Node with single pointer
+	- `DoubleNode` - Node with two pointers
+
+- `linkedlist.py`
 	- `SinglyLinkedList`
+
+- `tree.py`
+	- `BinarySearchTree`
 
 ## Requirements 
 
