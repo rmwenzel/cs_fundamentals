@@ -2,6 +2,7 @@
 
 from structures.node import SingleNode
 
+
 class SinglyLinkedList:
     """
     Node-based implementation of singly-linked lists.
