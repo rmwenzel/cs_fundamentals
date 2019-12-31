@@ -1,8 +1,7 @@
 """Unit tests for linked list classes."""
 
 import pytest
-from structures.linkedlist import SinglyLinkedList
-from structures.node import SingleNode
+from structures.linkedlist import SingleNode, SinglyLinkedList
 
 
 class TestSinglyLinkedList:
