@@ -1,6 +1,3 @@
-# CS Fundamentals
----
-
 OOP implementations of fundamental data structures and algorithms in Python 3.
 
 
@@ -14,38 +11,52 @@ This is a personal project for learning purposes. The main aims are:
 	- documentation
 	- version control
 	- unit testing
-	- virtual environment
-
-Development is ongoing
+	- virtual environments
 
 
-## `structures/`
+## Data Structures
 
-This directory contains implementations of various famous abstract data types. Implemented so far are:
+Implementations of various standard abstract data types. These are in found in the `structures/` directory. Implemented so far are:
 
-- `nodes.py` - Node types
+- `nodes.py`
 	- `SingleNode` - Node with single pointer
 	- `DoubleNode` - Node with two pointers
 
-- `linkedlist.py` - Linked-list types
-	- `SinglyLinkedList` - Singly-linked lists
+- `linkedlist.py`
+	- `SinglyLinkedList`
+
+- `tree.py`
+	- `BinarySearchTree`
 
 
+## Algorithms
+
+Implementations of various standard algorithms. These are in found in the `algorithms/` directory. Implemented so far are:
 
 
+- `mult.py`
+	- `recmult` - naive recursive multiplication
+	- `karutsaba` - Karutsaba multiplication
+
+- `sort.py`
+	- `ListSort` - Built-in `list` class augmented with sort methods
+		- `.quicksort`
+		- `.mergesort`
 
 ## Requirements 
 
-Although there are few packages beyond the python standard library, I'm using a 
-[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#). The file 'environment.yml' contains all conda and pip dependencies. If you have conda installed you can create the environment with
+Package dependencies are in `environment.yml`, a
+[conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#) config file. If you have conda installed you can create the environment with
 
 ```
 conda env create -f environment.yml
 ```
 
 ## Testing
-These are in the tests directory. Tests use pytest and can be run from the root directory.
+
+These are in the `tests` directory. Tests use `pytest` and can be run from the root directory.
 
 ```
 python -m pytest
 ```
+
