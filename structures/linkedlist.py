@@ -68,7 +68,7 @@ class SinglyLinkedList:
             raise StopIteration
 
     def __iter__(self):
-        """Iterate-or dunder."""
+        """Iterator dunder."""
         # Attribute for next function
         self.n = self.head
         return self
