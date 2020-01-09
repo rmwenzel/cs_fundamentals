@@ -18,11 +18,9 @@ This is a personal project for learning purposes. The main aims are:
 
 Implementations of various standard abstract data types. These are in found in the `structures/` directory. Implemented so far are:
 
-- `nodes.py`
+- `linkedlist.py`
 	- `SingleNode` - Node with single pointer
 	- `DoubleNode` - Node with two pointers
-
-- `linkedlist.py`
 	- `SinglyLinkedList`
 
 - `tree.py`
@@ -38,10 +36,12 @@ Implementations of various standard algorithms. These are in found in the `algor
 	- `recmult` - naive recursive multiplication
 	- `karutsaba` - Karutsaba multiplication
 
-- `sort.py`
+- `listsort.py`
 	- `ListSort` - Built-in `list` class augmented with sort methods
 		- `.quicksort`
 		- `.mergesort`
+
+
 
 ## Requirements 
 

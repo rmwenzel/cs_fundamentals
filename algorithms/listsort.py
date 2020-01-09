@@ -1,6 +1,7 @@
 """Sorting algorithms for lists."""
 
 from math import ceil
+from random import randrange
 
 
 class ListSort(list):
@@ -9,7 +10,7 @@ class ListSort(list):
     #  Quicksort helper methods
 
     @staticmethod
-    def choose_median(a_list):
+    def choose_median_index(a_list):
         """Choose index of median of first, last, and middle entries.
 
         Assumes entries are comparable orderable types.
@@ -23,7 +24,7 @@ class ListSort(list):
         Returns
         -------
         median_index : int
-            Index of median of first, last and middle entries
+            Index of median of first, last and middle entries of list
         """
         len_list = len(a_list)
         # first, last, and middle entries
@@ -40,6 +41,25 @@ class ListSort(list):
         else:
             median_index = len_list - 1
         return median_index
+
+    @staticmethod
+    def choose_random_index(a_list):
+        """Choose random list index.
+
+        Assumes entries are comparable orderable types.
+
+        Parameters
+        ----------
+        a_list : list
+            List to choose index from
+
+        Returns
+        -------
+        random_index : int
+            List index chosen uniformly at random
+        """
+        random_index = randrange(0, len(a_list))
+        return random_index
 
     @staticmethod
     def partition(a_list, left_index, right_index):
@@ -79,12 +99,55 @@ class ListSort(list):
                                                  a_list[left_index])
         return new_index
 
-    def quicksort(self, choose_pivot=choose_median.__func__):
+    def rselect(self, a_list, n):
+        """Find n-th order statistic with random pivot selection.
+
+        Parameters
+        ----------
+        a_list: list
+            List to find order statistic in. Assumes list is non empty and
+            entries are comparable orderable types.
+        n: int
+            Ordinal of order statistic, i.e. index of order statistic after
+            list is sorted. For example, the second order-statistic is in the
+            second ordered position.
+
+        Returns
+        -------
+        ord_stat: object
+            Desired order statistic
+        """
+        # check ordinal is within approprate range
+        if n <= 1 or n > len(a_list):
+            raise ValueError('Ordinal of order statistic must be between 1' +
+                             'and length of list')
+        list_len = len(a_list)
+        # check list isn't empty
+        if not a_list:
+            raise ValueError('List must be non-empty')
+        # if the list has length one all order statistics are the same
+        if list_len == 1:
+            return a_list[0]
+        else:
+            # choose a pivot index
+            index_p = self.choose_random_index(a_list)
+            # swap pivot and first element
+            a_list[0], a_list[index_p] = a_list[index_p], a_list[0]
+            # partition around pivot
+            index_p = self.partition(a_list, 0, len(a_list) - 1)
+            if n == index_p:
+                return a_list[index_p]
+            elif n < index_p:
+                return self.rselect(a_list[:index_p], n)
+            else:
+                self.rselect(a_list[index_p:], n - index_p)
+
+    def quicksort(self, choose_pivot=choose_median_index.__func__):
         """Recursive quicksort.
 
         Parameters
         ----------
-        choose_pivot : function, default choose_median
+        choose_pivot : function, default choose_median_index
             Method for choosing pivot.
 
         Returns
@@ -184,3 +247,4 @@ class ListSort(list):
             # merge left and right sorted lists
             self_sorted = ListSort.merge(left, right)
         return self_sorted
+
