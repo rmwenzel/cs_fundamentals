@@ -11,33 +11,21 @@ This is a personal project for learning purposes. The main aims are:
 	- documentation
 	- version control
 	- unit testing
-	- virtual environments
 
-## Data Structures
-
-<<<<<<< HEAD
-Implementations of various famous abstract data types. These are in found in the `structures/` directory.Implemented so far are:
-
-- `nodes.py`
-=======
 ## Data Structures
 
 Implementations of various standard abstract data types. These are in found in the `structures/` directory. Implemented so far are:
 
 - `linkedlist.py`
->>>>>>> develop
-	- `SingleNode` - Node with single pointer
-	- `DoubleNode` - Node with two pointers
 	- `SinglyLinkedList`
 
 - `tree.py`
 	- `BinarySearchTree`
 
+- `graph.py`
+	- `DirGraph` - directed graph
+	- `Graph` - undirected graph
 
-<<<<<<< HEAD
-- `linkedlist.py`
-	- `SinglyLinkedList`
-=======
 ## Algorithms
 
 Implementations of various standard algorithms. These are in found in the `algorithms/` directory. Implemented so far are:
@@ -52,12 +40,15 @@ Implementations of various standard algorithms. These are in found in the `algor
 		- `.quicksort`
 		- `.mergesort`
 
->>>>>>> develop
+- `graphprocess.py`
+	- `DirGraphProcess` - `stuctures.DirGraph` augmented with graph processing methods
+		- `dfs_rec_shortpath` - Recursive depth-first search for shortest path
+		- `dfs_it_shortpath` - Iterative depth-first search for shortest path
+		- `bfs_it_shortpath` - Iterative breadth-first search for shortest path
+		- `dfs_rec_traversal` - Recursive depth-first traversal
+		- `dfs_it_shortpath` - Iterative depth-first traversal
 
-- `tree.py`
-	- `BinarySearchTree`
 
-## Requirements 
 
 Package dependencies are in `environment.yml`, a
 [conda virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#) config file. If you have conda installed you can create the environment with
