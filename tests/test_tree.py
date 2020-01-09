@@ -1,4 +1,4 @@
-"""Unit tests for tree classes."""
+"""Unit tests for tree structures."""
 
 import pytest
 from structures.tree import BinarySearchTree

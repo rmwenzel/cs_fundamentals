@@ -1,6 +1,3 @@
-# CS Fundamentals
----
-
 OOP implementations of fundamental data structures and algorithms in Python 3.
 
 
@@ -14,20 +11,48 @@ This is a personal project for learning purposes. The main aims are:
 	- documentation
 	- version control
 	- unit testing
-	- virtual environment
-
-Development is ongoing
+	- virtual environments
 
 ## Data Structures
 
+<<<<<<< HEAD
 Implementations of various famous abstract data types. These are in found in the `structures/` directory.Implemented so far are:
 
 - `nodes.py`
-	- `SingleNode` - Node with single pointer
-	- `DoubleNode` - Node with two pointers
+=======
+## Data Structures
+
+Implementations of various standard abstract data types. These are in found in the `structures/` directory. Implemented so far are:
 
 - `linkedlist.py`
+>>>>>>> develop
+	- `SingleNode` - Node with single pointer
+	- `DoubleNode` - Node with two pointers
 	- `SinglyLinkedList`
+
+- `tree.py`
+	- `BinarySearchTree`
+
+
+<<<<<<< HEAD
+- `linkedlist.py`
+	- `SinglyLinkedList`
+=======
+## Algorithms
+
+Implementations of various standard algorithms. These are in found in the `algorithms/` directory. Implemented so far are:
+
+
+- `mult.py`
+	- `recmult` - naive recursive multiplication
+	- `karutsaba` - Karutsaba multiplication
+
+- `listsort.py`
+	- `ListSort` - Built-in `list` class augmented with sort methods
+		- `.quicksort`
+		- `.mergesort`
+
+>>>>>>> develop
 
 - `tree.py`
 	- `BinarySearchTree`
